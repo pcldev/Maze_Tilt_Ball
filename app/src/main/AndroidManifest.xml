@@ -20,6 +20,12 @@
         <activity
                 android:name=".MainActivity"
                 android:exported="false"/>
+
+        <activity
+            android:name=".MazeActivity"
+            android:exported="false"
+            android:screenOrientation="sensorLandscape"
+            />
         <activity
                 android:name=".SignIn"
                 android:exported="true"

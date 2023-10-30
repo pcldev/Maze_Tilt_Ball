@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "28383079352",
+    "project_id": "login-6e942",
+    "storage_bucket": "login-6e942.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:28383079352:android:dc13173c63e176ba24bd4d",
+        "android_client_info": {
+          "package_name": "com.example.mazetiltball"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-xqinP5beeCj9y7BNOsrbTgmH_UfN9MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
