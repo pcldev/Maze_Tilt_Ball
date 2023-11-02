@@ -15,11 +15,11 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_regular"
             android:text="Maze Tilt Ball"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:fontFamily="@font/montserrat_regular"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
@@ -27,10 +27,37 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+
             android:text="Let's go"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+        <Button
+            android:id="@+id/btnHiendiem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Point"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/letgobtn"
+            app:layout_constraintVertical_bias="0.063" />
+
+        <ImageButton
+            android:id="@+id/btnLuatChoi"
+            android:layout_width="54dp"
+            android:layout_height="50dp"
+            android:background="#FF673AB7"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.921"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.063"
+            android:contentDescription="Mô tả nút Luật Chơi"
+            app:srcCompat="@android:drawable/ic_dialog_info" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>
