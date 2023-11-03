@@ -44,4 +44,16 @@
         app:layout_constraintTop_toBottomOf="@+id/txtluat"
         app:layout_constraintVertical_bias="0.235"
         app:srcCompat="@drawable/img" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="71dp"
+        android:layout_height="71dp"
+        android:text="B"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.047"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
 </androidx.constraintlayout.widget.ConstraintLayout>
