@@ -35,9 +35,9 @@ import org.jetbrains.annotations.NotNull;
 
 public class SignIn extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
-    EditText edtEmail, edtMatKhau;
-    Button btnDangNhap, btnDangKy;
-    FirebaseAuth mAuth, mAuthGg;
+    private EditText edtEmail, edtMatKhau;
+    private Button btnDangNhap, btnDangKy;
+    private FirebaseAuth mAuth, mAuthGg;
     private GoogleSignInClient mGoogleSignInClient;
 
     @Override
