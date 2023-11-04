@@ -5,58 +5,91 @@
     android:id="@+id/c"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#EDE6E3">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="1299dp"
+        android:layout_height="476dp"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        android:background="#EDE6E3"
+        >
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_regular"
-            android:text="Maze Tilt Ball"
+            android:layout_width="502dp"
+            android:layout_height="54dp"
+            android:fontFamily="sans-serif"
+            android:text="Welcome to Maze Tilt Ball Game"
+            android:textColor="#000000"
+            android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.233"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.09" />
 
         <Button
             android:id="@+id/letgobtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-
-            android:text="Let's go"
+            android:layout_width="173.333dp"
+            android:layout_height="70dp"
+            android:fontFamily="sans-serif"
+            android:text="Play"
+            android:textColor="#FFFFFF"
+            android:textSize="33.333dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.312"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.14"
+            tools:backgroundTint="@color/black" />
 
         <Button
             android:id="@+id/btnHiendiem"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Show Point"
+            android:layout_width="199dp"
+            android:layout_height="66dp"
+            android:fontFamily="sans-serif"
+            android:text="See Rank"
+            android:textSize="33.333dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.308"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/letgobtn"
-            app:layout_constraintVertical_bias="0.063" />
+            app:layout_constraintVertical_bias="0.328"
+            tools:backgroundTint="@color/black" />
 
         <ImageButton
             android:id="@+id/btnLuatChoi"
-            android:layout_width="54dp"
-            android:layout_height="50dp"
-            android:background="#FF673AB7"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.921"
+            android:layout_width="84dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="728dp"
+            android:layout_marginTop="320dp"
+            android:background="@color/black"
+            android:contentDescription="Mô tả nút Luật Chơi"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.063"
-            android:contentDescription="Mô tả nút Luật Chơi"
             app:srcCompat="@android:drawable/ic_dialog_info" />
+
+        <TextView
+            android:id="@+id/txtV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="416dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="14dp"
+            android:width="40dp"
+            android:height="45.333dp"
+            android:fontFamily="sans-serif"
+            android:text="or"
+            android:textSize="33.333dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnHiendiem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/letgobtn"
+            app:layout_constraintVertical_bias="0.416" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
