@@ -4,51 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LuatchoiActivity">
+    tools:context=".LuatchoiActivity"
+    android:background="#EDE6E3">
 
     <TextView
         android:id="@+id/txtTitle"
-        android:layout_width="295dp"
-        android:layout_height="61dp"
+        android:layout_width="297dp"
+        android:layout_height="47dp"
         android:text="Cách chơi Maze Tilt Ball"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.337"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.045" />
 
     <TextView
         android:id="@+id/txtluat"
-        android:layout_width="349dp"
-        android:layout_height="308dp"
+        android:layout_width="336dp"
+        android:layout_height="277dp"
         android:gravity="center"
         android:text="Khi ấn vào nút bắt đầu chơi thì giao diện người dùng chuyển đến giao diện có 1 quả. Người dùng sẽ sử dụng nghiêng sang trái sang phải, hướng về  trước và sau của điện thoại để quả bóng tránh chướng ngại vật. Người dùng được tính thời gian mỗi màn chơi cho người dùng. Vượt qua hết chướng ngại vật đến điểm đó là đích thì người chơi đã chiến thắng và màn chơi sẽ dừng."
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.334"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.183"
+        android:fontFamily="sans-serif"/>
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="282dp"
-        android:layout_height="210dp"
+        android:layout_width="224dp"
+        android:layout_height="163dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtluat"
-        app:layout_constraintVertical_bias="0.235"
+        app:layout_constraintStart_toEndOf="@+id/txtluat"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/img" />
 
     <Button
         android:id="@+id/btnBack"
-        android:layout_width="71dp"
-        android:layout_height="71dp"
+        android:layout_width="67dp"
+        android:layout_height="64dp"
+        android:backgroundTint="@color/black"
         android:text="B"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

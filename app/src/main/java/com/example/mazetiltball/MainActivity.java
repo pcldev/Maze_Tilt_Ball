@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         letGoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, MazeActivity.class);
+                Intent intent = new Intent(MainActivity.this, ManChoiActivity.class);
                 startActivity(intent);
             }
         });

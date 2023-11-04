@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManChoiActivity"
+    android:background="#EDE6E3" >
+
+    <TextView
+        android:id="@+id/txtView"
+        android:layout_width="265dp"
+        android:layout_height="46dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center"
+        android:text="Maze Tile Ball"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.085" />
+
+    <Button
+        android:id="@+id/btnMan1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:width="122dp"
+        android:height="122dp"
+        android:backgroundTint="#F3B1B1"
+        android:text="Game 1"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.497" />
+
+    <Button
+        android:id="@+id/btnMan2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:width="122dp"
+        android:height="122dp"
+        android:backgroundTint="#F3B1B1"
+        android:text="Game 2"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMan1"
+        app:layout_constraintStart_toEndOf="@+id/btnMan1"
+        app:layout_constraintTop_toTopOf="@+id/btnMan1"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnMan3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:width="122dp"
+        android:height="122dp"
+        android:backgroundTint="#F3B1B1"
+        android:text="Game 3"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMan2"
+        app:layout_constraintStart_toEndOf="@+id/btnMan2"
+        app:layout_constraintTop_toTopOf="@+id/btnMan2"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnMan4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:width="122dp"
+        android:height="122dp"
+        android:backgroundTint="#F3B1B1"
+        android:text="Game 4"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMan3"
+        app:layout_constraintStart_toEndOf="@+id/btnMan3"
+        app:layout_constraintTop_toTopOf="@+id/btnMan3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/btnMan5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="122dp"
+        android:height="122dp"
+        android:backgroundTint="#F3B1B1"
+        android:text="Game 5"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/btnMan4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnMan4"
+        app:layout_constraintTop_toTopOf="@+id/btnMan4" />
+</androidx.constraintlayout.widget.ConstraintLayout>
