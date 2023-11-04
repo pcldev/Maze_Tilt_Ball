@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:app="http://schemas.android.com/apk/res-auto"
-              xmlns:tools="http://schemas.android.com/tools"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              tools:context=".SignUp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignUp">
+
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="83dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="100dp"
-            android:text="Đăng ký"
-            android:textColor="#000000"
-            android:textSize="40sp"
-            android:textStyle="bold"></TextView>
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Đăng ký"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        android:textStyle="bold"></TextView>
 
     <EditText
-            android:id="@+id/dkEmail"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:hint="Email"></EditText>
+        android:id="@+id/dkEmail"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:hint="Email"></EditText>
 
     <EditText
-            android:id="@+id/dkMatKhau"
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:hint="Mật Khẩu"></EditText>
+        android:id="@+id/dkMatKhau"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:hint="Mật Khẩu"></EditText>
 
     <Button
-            android:id="@+id/dkDangKy"
-            android:layout_marginTop="20dp"
-            android:layout_gravity="center"
-            android:text="Đăng ký"
-            android:layout_width="wrap_content"
-            android:backgroundTint="#7EABD0"
-            android:layout_height="wrap_content"></Button>
+        android:id="@+id/dkDangKy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#7EABD0"
+        android:text="Đăng ký"></Button>
 
     <Button
         android:id="@+id/dkDangNhap"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center"
-        android:text="Quay lại Đăng Nhâp"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
         android:backgroundTint="#7EABD0"
-        android:layout_height="wrap_content"></Button>
+        android:text="Quay lại Đăng Nhâp"></Button>
 </LinearLayout>
