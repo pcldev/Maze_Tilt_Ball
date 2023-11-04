@@ -96,8 +96,7 @@ public class SignIn extends AppCompatActivity {
                 account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
-                Toast.makeText(getApplicationContext(), "Đăng nhập thất bai", Toast.LENGTH_SHORT).show();
-//                throw new RuntimeException(e);
+                throw new RuntimeException(e);
             }
         }
     }
