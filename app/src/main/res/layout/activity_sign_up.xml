@@ -9,9 +9,15 @@
 
     <TextView
         android:layout_width="wrap_content"
+<<<<<<< HEAD
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
+=======
+        android:layout_height="83dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+>>>>>>> 79da3e5f5dc9a738c03deea3ccdf5abb506f1dcc
         android:text="Đăng ký"
         android:textColor="#000000"
         android:textSize="40sp"
@@ -20,15 +26,25 @@
     <EditText
         android:id="@+id/dkEmail"
         android:layout_width="250dp"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
+=======
+        android:layout_height="59dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+>>>>>>> 79da3e5f5dc9a738c03deea3ccdf5abb506f1dcc
         android:hint="Email"></EditText>
 
     <EditText
         android:id="@+id/dkMatKhau"
         android:layout_width="250dp"
+<<<<<<< HEAD
         android:layout_height="wrap_content"
+=======
+        android:layout_height="55dp"
+>>>>>>> 79da3e5f5dc9a738c03deea3ccdf5abb506f1dcc
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:hint="Mật Khẩu"></EditText>
