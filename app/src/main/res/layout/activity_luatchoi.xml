@@ -9,8 +9,9 @@
 
     <TextView
         android:id="@+id/txtTitle"
-        android:layout_width="297dp"
+        android:layout_width="wrap_content"
         android:layout_height="47dp"
+        android:fontFamily="@font/ribeye_regular"
         android:text="Cách chơi Maze Tilt Ball"
         android:textSize="26sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -24,6 +25,7 @@
         android:id="@+id/txtluat"
         android:layout_width="336dp"
         android:layout_height="277dp"
+        android:fontFamily="@font/ribeyemarrow_regular"
         android:gravity="center"
         android:text="Khi ấn vào nút bắt đầu chơi thì giao diện người dùng chuyển đến giao diện có 1 quả. Người dùng sẽ sử dụng nghiêng sang trái sang phải, hướng về  trước và sau của điện thoại để quả bóng tránh chướng ngại vật. Người dùng được tính thời gian mỗi màn chơi cho người dùng. Vượt qua hết chướng ngại vật đến điểm đó là đích thì người chơi đã chiến thắng và màn chơi sẽ dừng."
         android:textSize="18sp"
@@ -32,8 +34,7 @@
         app:layout_constraintHorizontal_bias="0.334"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtTitle"
-        app:layout_constraintVertical_bias="0.183"
-        android:fontFamily="sans-serif"/>
+        app:layout_constraintVertical_bias="0.183" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -47,10 +48,10 @@
 
     <Button
         android:id="@+id/btnBack"
-        android:layout_width="67dp"
+        android:layout_width="wrap_content"
         android:layout_height="64dp"
         android:backgroundTint="@color/black"
-        android:text="B"
+        android:text="Back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
