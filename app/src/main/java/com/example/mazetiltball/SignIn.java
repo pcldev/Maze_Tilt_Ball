@@ -76,10 +76,10 @@ public class SignIn extends AppCompatActivity {
 
         gsc = GoogleSignIn.getClient(this,gso);
 
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-        if (account != null) {
-            firebaseAuthWithGoogle(account);
-        }
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+//        if (account != null) {
+//            firebaseAuthWithGoogle(account);
+//        }
 
         SignInButton btnGoogleSignIn = findViewById(R.id.btn_google_sign_in);
         btnGoogleSignIn.setOnClickListener(new View.OnClickListener() {

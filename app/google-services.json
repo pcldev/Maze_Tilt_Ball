@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "28383079352",
+    "firebase_url": "https://login-6e942-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "login-6e942",
     "storage_bucket": "login-6e942.appspot.com"
   },
@@ -35,7 +36,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "28383079352-lku95cfub9o53hlkuge7p09f8vkp6eu6.apps.googleusercontent.com",
+              "client_id": "28383079352-himk6s8vqmd9mgknjfh1tdbp3gpr2nma.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
@@ -64,7 +65,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "28383079352-lku95cfub9o53hlkuge7p09f8vkp6eu6.apps.googleusercontent.com",
+              "client_id": "28383079352-himk6s8vqmd9mgknjfh1tdbp3gpr2nma.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
