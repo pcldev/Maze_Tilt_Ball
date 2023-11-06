@@ -13,14 +13,18 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     Button letGoBtn;
     ImageButton btnluatchoi;
+    FirebaseAuth mAuth;
+    FirebaseUser user;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
-    TextView name,email;
+    TextView email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
 
         letGoBtn = findViewById(R.id.letgobtn);
         btnluatchoi = (ImageButton) findViewById(R.id.btnLuatChoi);
-        name = findViewById(R.id.name);
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
         email = findViewById(R.id.email);
         gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("28383079352-lku95cfub9o53hlkuge7p09f8vkp6eu6.apps.googleusercontent.com")
@@ -37,10 +42,10 @@ public class MainActivity extends AppCompatActivity {
         gsc = GoogleSignIn.getClient(this, gso);
         GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(this);
 
-        if(acct!=null){
-            String personName = acct.getDisplayName();
+        if(user != null){
+            email.setText(user.getEmail());
+        }else if(acct!=null){
             String personEmail = acct.getEmail();
-            name.setText(personName);
             email.setText(personEmail);
         }
 
