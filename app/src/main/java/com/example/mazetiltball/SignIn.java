@@ -41,7 +41,8 @@ public class SignIn extends AppCompatActivity {
     private Button btnDangNhap;
     private TextView btnDangKy;
     private FirebaseAuth mAuth, mAuthGg;
-    private GoogleSignInClient mGoogleSignInClient;
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient gsc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,12 +69,18 @@ public class SignIn extends AppCompatActivity {
             }
         });
 
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken("28383079352-lku95cfub9o53hlkuge7p09f8vkp6eu6.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+        gsc = GoogleSignIn.getClient(this,gso);
+
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if (account != null) {
+            firebaseAuthWithGoogle(account);
+        }
+
         SignInButton btnGoogleSignIn = findViewById(R.id.btn_google_sign_in);
         btnGoogleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,7 +91,7 @@ public class SignIn extends AppCompatActivity {
     }
 
     private void signInWithGoogle() {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        Intent signInIntent = gsc.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
@@ -96,7 +103,7 @@ public class SignIn extends AppCompatActivity {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             GoogleSignInAccount account = null;
             try {
-                account = task.getResult(ApiException.class);
+                 account = task.getResult(ApiException.class);
                 firebaseAuthWithGoogle(account);
             } catch (ApiException e) {
                 throw new RuntimeException(e);
