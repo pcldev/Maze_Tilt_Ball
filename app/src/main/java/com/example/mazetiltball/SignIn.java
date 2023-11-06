@@ -32,6 +32,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class SignIn extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
@@ -66,7 +67,7 @@ public class SignIn extends AppCompatActivity {
         });
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.app_name))
+                .requestIdToken("28383079352-lku95cfub9o53hlkuge7p09f8vkp6eu6.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
@@ -86,7 +87,7 @@ public class SignIn extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
@@ -107,15 +108,15 @@ public class SignIn extends AppCompatActivity {
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser user = mAuthGg.getCurrentUser();
-                        Intent homeIntent = new Intent(SignIn.this, MainActivity.class);
-                        startActivity(homeIntent);
+                        Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(SignIn.this, MainActivity.class);
+                        startActivity(intent);
                         finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "Đăng nhập thất bai", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
-
 
     private void register() {
         Intent i = new Intent(SignIn.this, SignUp.class);
@@ -135,6 +136,7 @@ public class SignIn extends AppCompatActivity {
             Toast.makeText(this, "Vui lòng nhập email", Toast.LENGTH_SHORT).show();
             return;
         }
+
         mAuth.signInWithEmailAndPassword(email, matKhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {

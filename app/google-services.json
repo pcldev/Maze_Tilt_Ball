@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "28383079352-v6mt2rh9cse62bvd4r5c7gulusnukiqk.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mazetiltball",
+            "certificate_hash": "8332a220481762dab38170095126f1ed4fbf3838"
+          }
+        },
+        {
           "client_id": "28383079352-lku95cfub9o53hlkuge7p09f8vkp6eu6.apps.googleusercontent.com",
           "client_type": 3
         }
