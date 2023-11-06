@@ -40,6 +40,13 @@ public class SignUp extends AppCompatActivity {
                 register();
             }
         });
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUp.this, SignIn.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void register() {
