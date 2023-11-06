@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Maze Tilt Ball</string>
+    <string name="sign_up"><u>Sign up</u></string>
+
 </resources>

@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -37,7 +38,8 @@ import org.jetbrains.annotations.Nullable;
 public class SignIn extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     private EditText edtEmail, edtMatKhau;
-    private Button btnDangNhap, btnDangKy;
+    private Button btnDangNhap;
+    private TextView btnDangKy;
     private FirebaseAuth mAuth, mAuthGg;
     private GoogleSignInClient mGoogleSignInClient;
 

@@ -4,18 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="@color/background"
     android:orientation="vertical"
     tools:context=".SignIn">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:text="Đăng nhập"
-        android:textColor="#000000"
-        android:textSize="40sp"
-        android:textStyle="bold"></TextView>
+        android:layout_marginTop="64dp"
+        app:srcCompat="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/ribeye_regular"
+        android:text="Maze Tilt Ball"
+        android:textAlignment="center"
+        android:textSize="40sp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/ribeyemarrow_regular"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:text="Take a deep breath and tilt your way through the maze in Maze Tilt Ball game!" />
 
     <EditText
         android:id="@+id/dnEmail"
@@ -23,7 +40,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
-        android:hint="Email"></EditText>
+        android:background="@drawable/round"
+        android:hint="Email"
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"></EditText>
 
     <EditText
         android:id="@+id/dnMatKhau"
@@ -31,8 +53,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:hint="Mật khẩu"
-        android:inputType="textPassword"></EditText>
+        android:background="@drawable/round"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:paddingTop="15dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="15dp"></EditText>
 
     <Button
         android:id="@+id/dangNhap"
@@ -40,24 +67,64 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
-        android:backgroundTint="#7EABD0"
-        android:text="Đăng nhập"></Button>
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/ribeye_regular"
+        android:paddingStart="40dp"
+        android:paddingTop="15dp"
+        android:paddingRight="40dp"
+        android:paddingBottom="15dp"
+        android:text="Sign in"></Button>
 
-    <Button
-        android:id="@+id/dangKy"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:backgroundTint="#7EABD0"
-        android:text="Đăng Ký"></Button>
+        android:fontFamily="@font/ribeye_regular"
+        android:text="or"
+        android:textAlignment="center" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/btn_google_sign_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         android:layout_marginBottom="16dp" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:paddingBottom="30dp">
+
+        <TextView
+            android:id="@+id/dangKy"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/centeredTextView"
+            android:background="#00FFFFFF"
+            android:fontFamily="@font/ribeye_regular"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingTop="0dp"
+            android:paddingEnd="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="0dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/centeredTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="81dp"
+            android:fontFamily="@font/ribeye_regular"
+            android:text="Don't have an account?" />
+
+
+    </RelativeLayout>
 
 </LinearLayout>
