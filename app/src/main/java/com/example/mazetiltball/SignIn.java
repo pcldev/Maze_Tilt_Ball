@@ -3,6 +3,7 @@ package com.example.mazetiltball;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mazetiltball.auth.auth;
 import com.google.android.gms.common.api.ApiException;
 
 
@@ -43,6 +44,18 @@ public class SignIn extends AppCompatActivity {
     private FirebaseAuth mAuth, mAuthGg;
     private GoogleSignInOptions gso;
     private GoogleSignInClient gsc;
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            auth author = new auth();
+            author.goHomeActivity(SignIn.this);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
