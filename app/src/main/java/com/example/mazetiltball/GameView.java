@@ -8,11 +8,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.example.mazetiltball.auth.firebase;
+import com.example.mazetiltball.helpers.MazeOne;
 
 import java.math.BigDecimal;
 
@@ -201,106 +203,10 @@ public class GameView extends View {
         int mazeRight = getWidth();
         int mazeBottom = getHeight();
 
-        // Define wall thickness
-        int wallThickness = 20;
-        float left = 0, right = 0, top = 0, bottom = 0;
-        int DEFAULT_PADDING = 100;
 
-        // Define walls
-        RectF[] walls = new RectF[13];
-        left = mazeLeft + DEFAULT_PADDING;
-        top = mazeTop + DEFAULT_PADDING;
-        right = mazeLeft + DEFAULT_PADDING + wallThickness;
-        bottom = mazeBottom - DEFAULT_PADDING;
+        MazeOne mazeOne = new MazeOne();
 
-        walls[0] = new RectF(left, top, right, bottom);
-
-        left = mazeLeft + DEFAULT_PADDING;
-        top = mazeTop + DEFAULT_PADDING;
-        right = mazeRight - DEFAULT_PADDING;
-        bottom = mazeTop + DEFAULT_PADDING + wallThickness;
-
-        walls[1] = new RectF(left, top, right, bottom);
-
-        left = mazeLeft + DEFAULT_PADDING;
-        top = mazeBottom - DEFAULT_PADDING - wallThickness;
-        right = mazeRight - DEFAULT_PADDING;
-        bottom = mazeBottom - DEFAULT_PADDING;
-
-        walls[2] = new RectF(left, top, right, bottom);
-
-        left = mazeRight - DEFAULT_PADDING - wallThickness;
-        top = mazeTop + DEFAULT_PADDING;
-        right = mazeRight - DEFAULT_PADDING;
-        bottom = mazeBottom - DEFAULT_PADDING;
-
-        walls[3] = new RectF(left, top, right, bottom);
-
-        // Obstacles
-        left = (float) (mazeLeft + DEFAULT_PADDING * 2.5);
-        top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - top);
-
-        walls[4] = new RectF(left, top, right, bottom);
-
-        left = (float) (left * 1.7);
-        top = (float) (mazeTop + DEFAULT_PADDING);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - mazeBottom * 0.6);
-
-        walls[5] = new RectF(left, top, right, bottom);
-
-        left = (float) (left);
-        top = (float) (mazeBottom - mazeBottom * 0.4);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - DEFAULT_PADDING);
-
-        walls[6] = new RectF(left, top, right, bottom);
-
-        left = (float) (left * 1.4);
-        top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - top);
-
-        walls[7] = new RectF(left, top, right, bottom);
-
-
-        left = (float) (left * 1.3);
-        top = (float) (mazeTop + DEFAULT_PADDING);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - mazeBottom * 0.6);
-
-        walls[8] = new RectF(left, top, right, bottom);
-
-        left = (float) (left);
-        top = (float) (mazeBottom - mazeBottom * 0.4);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - DEFAULT_PADDING);
-
-        walls[9] = new RectF(left, top, right, bottom);
-
-
-        left = (float) (left * 1 + DEFAULT_PADDING * 1.7);
-        top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - top);
-
-        walls[10] = new RectF(left, top, right, bottom);
-
-        left = (float) (left + DEFAULT_PADDING * 1.7);
-        top = (float) (mazeTop + DEFAULT_PADDING);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - mazeBottom * 0.28);
-
-        walls[11] = new RectF(left, top, right, bottom);
-
-        left = (float) (left + DEFAULT_PADDING * 1.7);
-        top = (float) (mazeBottom * 0.28);
-        right = left + wallThickness;
-        bottom = (float) (mazeBottom - DEFAULT_PADDING);
-
-        walls[12] = new RectF(left, top, right, bottom);
+        RectF[] walls =  mazeOne.drawable(mazeLeft, mazeTop, mazeRight, mazeBottom);
 
         // Draw the maze walls
         mazePaint.setColor(Color.BLACK);
