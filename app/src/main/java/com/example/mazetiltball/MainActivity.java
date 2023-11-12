@@ -18,13 +18,14 @@ public class MainActivity extends AppCompatActivity {
     ImageButton btnluatchoi;
     FirebaseAuth mAuth;
     FirebaseUser user;
-    TextView email;
+    TextView email, txtLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        txtLogout = findViewById(R.id.txtSignout);
         letGoBtn = findViewById(R.id.letgobtn);
         btnluatchoi = (ImageButton) findViewById(R.id.btnLuatChoi);
         mAuth = FirebaseAuth.getInstance();
@@ -47,6 +48,20 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LuatchoiActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        txtLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get Firebase authentication instance
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+                // Sign out the user
+                mAuth.signOut();
+
+                Intent MainActivityIntent = new Intent(MainActivity.this, SignIn.class);
+                MainActivity.this.startActivity(MainActivityIntent);
             }
         });
     }
