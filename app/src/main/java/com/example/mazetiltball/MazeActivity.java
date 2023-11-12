@@ -1,7 +1,11 @@
 package com.example.mazetiltball;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -9,9 +13,20 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
+
+import com.example.mazetiltball.auth.auth;
+import com.example.mazetiltball.auth.firebase;
+import com.example.mazetiltball.controllers.gameController;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+import java.time.Instant;
+import java.util.Date;
 
 public class MazeActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -19,13 +34,15 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     private Sensor accelerometer;
 
+    private String mazeId;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
 
         gameView = findViewById(R.id.gameView);
-
         // Set up the sensor manager and accelerometer
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -46,7 +63,33 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onSensorChanged(SensorEvent event) {
         float tiltX = 350, tiltY = 150;
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
+
+        gameController GameController = new gameController(gameView, gameView.getContext());
+
+        if (gameView.getIsEnded()) {
+            if(!gameView.getIsShowModal()) {
+                int playerPoints = gameView.getPointsPlayer();
+                GameController.showVictoryModal(playerPoints);
+
+                int starsEarned = gameView.getPointsPlayer();
+
+                auth Auth = new auth();
+                FirebaseUser user = Auth.getUser();
+                String userEmail = user.getEmail();
+
+                // Retrieve data from the Intent
+                Intent intent = getIntent();
+                if (intent != null) {
+                    mazeId = intent.getStringExtra("mazeId");
+                }
+
+                Log.d("HUHHU", userEmail);
+
+                // Save star points to Firebase
+                GameController.saveStarPoints(userEmail, mazeId, starsEarned);
+            }
+
+        } else if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
 
             float[] values = event.values;
@@ -85,7 +128,6 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
             gameView.setTiltX(tiltX);
 
             gameView.setTiltY(tiltY);
-
             // Update tilt values along both X and Y axes
             gameView.invalidate(); // Force redraw
         }

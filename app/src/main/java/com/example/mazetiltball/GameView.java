@@ -1,20 +1,20 @@
 package com.example.mazetiltball;
 
+
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.mazetiltball.auth.firebase;
+
+import java.math.BigDecimal;
 
 public class GameView extends View {
     private Paint mazePaint;
@@ -27,8 +27,37 @@ public class GameView extends View {
     private float tiltX;
     private float tiltY;
 
+
+    public int initialBallX = 150;
+    public int initialBallY = 150;
+
+    private boolean isEnded = false;
+
+    private BigDecimal point = new BigDecimal("100");
+    private String time;
+
+    private BigDecimal maxTime = new BigDecimal("15000"); //15s
+
+
+    private final int numStars = 3;
+    private float[] starX = new float[numStars];
+    private float[] starY = new float[numStars];
+    private float starRadius = 20;
+    private boolean[] starCaught = new boolean[numStars];
+    private int playerPoints = 0;
+    private Bitmap starBitmap;
+
+    private boolean isShowingModal = false;
+
+    private boolean drawedStar = false;
+
+
     public GameView(Context context, AttributeSet attrs) {
         super(context, attrs);
+
+        // Initialize firebase
+        firebase Firebase = new firebase();
+        Firebase.initializeFirebase();
 
         // Initialize paints for maze and ball
         mazePaint = new Paint();
@@ -41,8 +70,11 @@ public class GameView extends View {
 
         // Set initial ball position
         ballRadius = 30; // Adjust this as needed
-        ballX = 150; // Initial X position
-        ballY = 150; // Initial Y position
+        ballX = initialBallX; // Initial X position
+        ballY = initialBallY; // Initial Y position
+
+        // Load your star image from resources (you need to replace R.drawable.star with your actual resource ID)
+        starBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.star);
 
     }
 
@@ -54,10 +86,105 @@ public class GameView extends View {
         this.tiltY = tiltY;
     }
 
+
+    public void setBallX(int ballX) {
+        this.ballX = ballX;
+    }
+
+    public void setBallY(int ballY) {
+        this.ballY = ballY;
+    }
+
+    public void setPlayerPoints(int playerPoints) {
+        this.playerPoints = playerPoints;
+    }
+
+    public void setDrawedStar(boolean drawedStar) {
+        this.drawedStar = drawedStar;
+    }
+
+    public void setIsEnded(boolean isEnded) {
+        this.isEnded = isEnded;
+    }
+
+    public boolean getIsEnded() {
+        return this.isEnded;
+    }
+
+    public int getPointsPlayer() {
+        return this.playerPoints;
+    }
+
+    public void setIsShowingModal(boolean isShowingModal) {
+        this.isShowingModal = isShowingModal;
+    }
+
+    public boolean getIsShowModal() {
+        return this.isShowingModal;
+    }
+
+    // Method to initialize stars
+    public void initializeStars() {
+        if (drawedStar) return;
+        // Ensure that canvas dimensions are available
+        int canvasWidth = getWidth();
+        int canvasHeight = getHeight();
+
+        if (canvasWidth > 0 && canvasHeight > 0) {
+            // Example coordinates, adjusted to place stars more centrally
+            starX[0] = canvasWidth / 4;     // 1/4th of the canvas width
+            starY[0] = canvasHeight / 4;    // 1/4th of the canvas height
+
+            starX[1] = canvasWidth / 2;     // Center of the canvas width
+            starY[1] = canvasHeight / 2;    // Center of the canvas height
+
+            starX[2] = canvasWidth * 3 / 4; // 3/4th of the canvas width
+            starY[2] = canvasHeight * 3 / 4; // 3/4th of the canvas height
+
+            for (int i = 0; i < numStars; i++) {
+                starCaught[i] = false;
+            }
+        }
+    }
+
+    // Method to handle when the ball catches a star
+    private void onStarCaught(int starIndex) {
+        // Increment the player's points
+        playerPoints += calculatePointsForStar();
+
+        // Set a flag indicating that the star has been caught
+        starCaught[starIndex] = true;
+
+        // Move the star to an off-screen position to "disappear" it
+        starX[starIndex] = -1000;
+        starY[starIndex] = -1000;
+
+        // Request a redraw of the canvas
+        invalidate();
+    }
+
+
+    // Method to calculate points for catching a star (adjust the logic as needed)
+    private int calculatePointsForStar() {
+        return 1;
+    }
+
+    // Method to check for collision between the ball and a specific star
+    private boolean isCollisionWithStar(float ballX, float ballY, float ballRadius, float starX, float starY, float starRadius) {
+        float distance = (float) Math.sqrt(Math.pow(ballX - starX, 2) + Math.pow(ballY - starY, 2));
+        boolean isCollision = distance < (ballRadius + starRadius);
+
+        return isCollision;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
+        // Initial star
+        initializeStars();
+
+        drawedStar = true;
         // Update ball position based on tilt along both X and Y axes
         ballX += tiltX * 2.5; // Adjust multiplier for sensitivity
         ballY += tiltY * 2.5; // Adjust multiplier for sensitivity
@@ -230,7 +357,27 @@ public class GameView extends View {
             ballY = (float) (exitY + ((exitSize - radius * 3 / 4) / 2) - 10);
 
 
-            Toast.makeText(getContext(), "You Win!", Toast.LENGTH_SHORT).show();
+            isEnded = true;
+        }
+
+        for (int i = 0; i < numStars; i++) {
+            if (!starCaught[i]) {
+                canvas.drawBitmap(starBitmap, starX[i] - starRadius, starY[i] - starRadius, null);
+
+            }
+
+            // Check for collision between the ball and the star
+            if (!starCaught[i] && isCollisionWithStar(ballX, ballY, ballRadius, starX[i], starY[i], starRadius)) {
+                onStarCaught(i); // Handle star caught event
+            }
+        }
+
+        // Prevent redraw when the game is ended;
+        if (isEnded) {
+            // Handle game won condition
+            ballX = (float) (exitX + ((exitSize - radius * 3 / 4) / 2) - 10); // Center the ball on the exit
+            ballY = (float) (exitY + ((exitSize - radius * 3 / 4) / 2) - 10);
+
         }
 
         // Draw the ball
