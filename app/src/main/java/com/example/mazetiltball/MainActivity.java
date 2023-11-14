@@ -2,6 +2,7 @@ package com.example.mazetiltball;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,12 +15,13 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button letGoBtn;
+    Button letGoBtn, dangXuat;
     ImageButton btnluatchoi;
     FirebaseAuth mAuth;
     FirebaseUser user;
     TextView email;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         email = findViewById(R.id.email);
+        dangXuat = findViewById(R.id.mainDangXuat);
 
         if (user != null) {
             email.setText(user.getEmail());
@@ -46,6 +49,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LuatchoiActivity.class);
+                startActivity(intent);
+            }
+        });
+        dangXuat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SignIn.class);
                 startActivity(intent);
             }
         });

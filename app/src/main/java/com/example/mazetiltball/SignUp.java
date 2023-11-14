@@ -21,21 +21,21 @@ import com.google.firebase.auth.FirebaseUser;
 import org.jetbrains.annotations.NotNull;
 
 public class SignUp extends AppCompatActivity {
-    EditText edtEmail, edtMatKhau;
+    EditText edtEmail, edtMatKhau, edtLMatKhau;
     Button btnDangNhap, btnDangKy;
     FirebaseAuth mAuth;
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            auth author = new auth();
-            author.goHomeActivity(SignUp.this);
-        }
-    }
-
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            auth author = new auth();
+//            author.goHomeActivity(SignUp.this);
+//        }
+//    }
+//
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +46,7 @@ public class SignUp extends AppCompatActivity {
 
         edtEmail = findViewById(R.id.dkEmail);
         edtMatKhau = findViewById(R.id.dkMatKhau);
+        edtLMatKhau = findViewById(R.id.dklMatKhau);
         btnDangNhap = findViewById(R.id.dkDangNhap);
         btnDangKy = findViewById(R.id.dkDangKy);
 
@@ -65,18 +66,24 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void register() {
-        String email, matKhau;
+        String email, matKhau, reMatkKhau;
         email = edtEmail.getText().toString();
         matKhau = edtMatKhau.getText().toString();
+        reMatkKhau = edtLMatKhau.getText().toString();
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(this, "Vui lòng nhập email", Toast.LENGTH_SHORT).show();
             return;
         }
         if (TextUtils.isEmpty(matKhau)) {
-            Toast.makeText(this, "Vui lòng nhập email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Vui lòng nhập mật khẩu", Toast.LENGTH_SHORT).show();
             return;
         }
+        if (TextUtils.isEmpty(reMatkKhau) && !matKhau.equals(reMatkKhau)) {
+            Toast.makeText(this, "Vui lòng nhập lại mật khẩu", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         mAuth.createUserWithEmailAndPassword(email,matKhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull @NotNull Task<AuthResult> task) {

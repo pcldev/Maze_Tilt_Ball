@@ -82,40 +82,53 @@
         android:layout_marginTop="0dp"
         android:layout_marginBottom="16dp" />
 
+    <Button
+        android:id="@+id/dangKy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#000000"
+        android:fontFamily="@font/ribeye_regular"
+        android:paddingStart="40dp"
+        android:paddingTop="15dp"
+        android:paddingRight="40dp"
+        android:paddingBottom="15dp"
+        android:text="Sign up"></Button>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="bottom"
-        android:paddingBottom="30dp">
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:gravity="bottom"-->
+<!--        android:paddingBottom="30dp">-->
 
-        <TextView
-            android:id="@+id/dangKy"
-            android:layout_width="77dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_toEndOf="@+id/centeredTextView"
-            android:background="#00FFFFFF"
-            android:fontFamily="@font/ribeye_regular"
-            android:paddingStart="0dp"
-            android:paddingLeft="0dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="0dp"
-            android:paddingRight="0dp"
-            android:paddingBottom="0dp"
-            android:text="@string/sign_up"
-            android:textColor="@color/black" />
+<!--        <TextView-->
+<!--            android:id="@+id/dangKy"-->
+<!--            android:layout_width="77dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_toEndOf="@+id/centeredTextView"-->
+<!--            android:background="#00FFFFFF"-->
+<!--            android:fontFamily="@font/ribeye_regular"-->
+<!--            android:paddingStart="0dp"-->
+<!--            android:paddingLeft="0dp"-->
+<!--            android:paddingTop="0dp"-->
+<!--            android:paddingEnd="0dp"-->
+<!--            android:paddingRight="0dp"-->
+<!--            android:paddingBottom="0dp"-->
+<!--            android:text="@string/sign_up"-->
+<!--            android:textColor="@color/black" />-->
 
-        <TextView
-            android:id="@+id/centeredTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="81dp"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="Don't have an account?" />
+<!--        <TextView-->
+<!--            android:id="@+id/centeredTextView"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentStart="true"-->
+<!--            android:layout_marginStart="81dp"-->
+<!--            android:fontFamily="@font/ribeye_regular"-->
+<!--            android:text="Don't have an account?" />-->
 
 
-    </RelativeLayout>
+<!--    </RelativeLayout>-->
 
 </LinearLayout>

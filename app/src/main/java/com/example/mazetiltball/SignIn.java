@@ -8,12 +8,12 @@ import com.google.android.gms.common.api.ApiException;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -39,23 +39,21 @@ import org.jetbrains.annotations.Nullable;
 public class SignIn extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     private EditText edtEmail, edtMatKhau;
-    private Button btnDangNhap;
-    private TextView btnDangKy;
+    private Button btnDangNhap, btnDangKy;
     private FirebaseAuth mAuth, mAuthGg;
-    private GoogleSignInOptions gso;
-    private GoogleSignInClient gsc;
+    GoogleSignInOptions gso;
+    GoogleSignInClient gsc;
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            auth author = new auth();
-            author.goHomeActivity(SignIn.this);
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if (currentUser != null) {
+//            auth author = new auth();
+//            author.goHomeActivity(SignIn.this);
+//        }
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,19 +107,22 @@ public class SignIn extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,@Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == RC_SIGN_IN) {
-            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-            GoogleSignInAccount account = null;
-            try {
-                 account = task.getResult(ApiException.class);
-                firebaseAuthWithGoogle(account);
-            } catch (ApiException e) {
-                throw new RuntimeException(e);
+            if (resultCode == RESULT_OK) {
+                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                GoogleSignInAccount account = null;
+                try {
+                    account = task.getResult(ApiException.class);
+                    firebaseAuthWithGoogle(account);
+                } catch (ApiException e) {
+                    throw new RuntimeException(e);
+                }
             }
         }
+
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
@@ -129,16 +130,34 @@ public class SignIn extends AppCompatActivity {
         mAuthGg.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
+                        // Đăng nhập thành công, lưu token
                         FirebaseUser user = mAuthGg.getCurrentUser();
+                        String idToken = account.getIdToken();
+                        // Lưu idToken vào SharedPreferences hoặc cơ sở dữ liệu
+                        saveIdToken(idToken);
+
                         Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignIn.this, MainActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(getApplicationContext(), "Đăng nhập thất bai", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+    private void saveIdToken(String idToken) {
+        // Khởi tạo một SharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Lưu ID token vào SharedPreferences
+        editor.putString("idToken", idToken);
+
+        // Lưu thay đổi
+        editor.apply();
+    }
+
+
 
     private void register() {
         Intent i = new Intent(SignIn.this, SignUp.class);
@@ -172,5 +191,6 @@ public class SignIn extends AppCompatActivity {
             }
         });
     }
+
 
 }
