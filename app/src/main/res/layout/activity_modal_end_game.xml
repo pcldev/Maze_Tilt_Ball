@@ -23,6 +23,6 @@
     <Button
         android:id="@+id/btnGoHome"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go to Maze challenges"/>
+        android:layout_height="match_parent"
+        android:text="Go to Mazes"/>
 </LinearLayout>

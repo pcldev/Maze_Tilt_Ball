@@ -46,6 +46,13 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
         // Set up the sensor manager and accelerometer
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+
+        // Retrieve data from the Intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            mazeId = intent.getStringExtra("mazeId");
+            gameView.setMazeId(mazeId);
+        }
     }
 
     @Override
@@ -76,12 +83,6 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
                 auth Auth = new auth();
                 FirebaseUser user = Auth.getUser();
                 String userEmail = user.getEmail();
-
-                // Retrieve data from the Intent
-                Intent intent = getIntent();
-                if (intent != null) {
-                    mazeId = intent.getStringExtra("mazeId");
-                }
 
                 Log.d("HUHHU", userEmail);
 
