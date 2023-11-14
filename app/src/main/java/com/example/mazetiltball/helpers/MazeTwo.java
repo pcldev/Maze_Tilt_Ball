@@ -2,7 +2,7 @@ package com.example.mazetiltball.helpers;
 
 import android.graphics.RectF;
 
-public class MazeOne {
+public class MazeTwo {
 
     // Define wall thickness
     int wallThickness = 20;

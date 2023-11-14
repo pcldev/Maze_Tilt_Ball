@@ -8,20 +8,18 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 
 import com.example.mazetiltball.auth.firebase;
+import com.example.mazetiltball.helpers.Maze;
 import com.example.mazetiltball.helpers.MazeOne;
 
-import java.math.BigDecimal;
-
 public class GameView extends View {
+    private String mazeId;
     private Paint mazePaint;
     private Paint ballPaint;
-
     private final Paint exitPaint = new Paint();
     private float ballRadius;
     private float ballX;
@@ -29,17 +27,9 @@ public class GameView extends View {
     private float tiltX;
     private float tiltY;
 
-
     public int initialBallX = 150;
     public int initialBallY = 150;
-
     private boolean isEnded = false;
-
-    private BigDecimal point = new BigDecimal("100");
-    private String time;
-
-    private BigDecimal maxTime = new BigDecimal("15000"); //15s
-
 
     private final int numStars = 3;
     private float[] starX = new float[numStars];
@@ -80,6 +70,14 @@ public class GameView extends View {
 
     }
 
+    public void setMazeId(String mazeId) {
+        this.mazeId = mazeId;
+    }
+
+    public String getMazeId() {
+        return this.mazeId;
+    }
+
     public void setTiltX(float tiltX) {
         this.tiltX = tiltX;
     }
@@ -87,7 +85,6 @@ public class GameView extends View {
     public void setTiltY(float tiltY) {
         this.tiltY = tiltY;
     }
-
 
     public void setBallX(int ballX) {
         this.ballX = ballX;
@@ -204,9 +201,32 @@ public class GameView extends View {
         int mazeBottom = getHeight();
 
 
-        MazeOne mazeOne = new MazeOne();
+        Maze maze = new Maze();
+        RectF[] walls = new RectF[0];
+        String mazeId = getMazeId();
+        switch(mazeId) {
+            case "maze_1": {
+                walls = maze.drawMazeOne(mazeLeft, mazeTop, mazeRight, mazeBottom);
+                break;
+            }
+            case "maze_2" : {
+                walls = maze.drawMazeTwo(mazeLeft, mazeTop, mazeRight, mazeBottom);
+                break;
+            }
+            case "maze_3": {
+                walls = maze.drawMazeThree(mazeLeft, mazeTop, mazeRight, mazeBottom);
+                break;
+            }
+            case "maze_4" : {
+                walls = maze.drawMazeFour(mazeLeft, mazeTop, mazeRight, mazeBottom);
+                break;
+            }
+            case "maze_5": {
+                walls = maze.drawMazeFive(mazeLeft, mazeTop, mazeRight, mazeBottom);
+                break;
+            }
+        }
 
-        RectF[] walls =  mazeOne.drawable(mazeLeft, mazeTop, mazeRight, mazeBottom);
 
         // Draw the maze walls
         mazePaint.setColor(Color.BLACK);
@@ -296,6 +316,5 @@ public class GameView extends View {
 
         // Handle configuration changes here (if needed)
     }
-
 
 }
