@@ -14,6 +14,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -39,21 +40,22 @@ import org.jetbrains.annotations.Nullable;
 public class SignIn extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     private EditText edtEmail, edtMatKhau;
+    private TextView textDangKy;
     private Button btnDangNhap, btnDangKy;
     private FirebaseAuth mAuth, mAuthGg;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if (currentUser != null) {
-//            auth author = new auth();
-//            author.goHomeActivity(SignIn.this);
-//        }
-//    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            auth author = new auth();
+            author.goHomeActivity(SignIn.this);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +67,7 @@ public class SignIn extends AppCompatActivity {
         edtEmail = findViewById(R.id.dnEmail);
         edtMatKhau = findViewById(R.id.dnMatKhau);
         btnDangNhap = findViewById(R.id.dangNhap);
-        btnDangKy = findViewById(R.id.dangKy);
+        textDangKy = findViewById(R.id.dangKy);
 
         btnDangNhap.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +75,7 @@ public class SignIn extends AppCompatActivity {
                 login();
             }
         });
-        btnDangKy.setOnClickListener(new View.OnClickListener() {
+        textDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 register();
