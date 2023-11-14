@@ -15,11 +15,11 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button letGoBtn, dangXuat;
+    Button letGoBtn;
     ImageButton btnluatchoi;
     FirebaseAuth mAuth;
     FirebaseUser user;
-    TextView email;
+    TextView email, txtLogout;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -27,12 +27,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        txtLogout = findViewById(R.id.txtSignout);
         letGoBtn = findViewById(R.id.letgobtn);
         btnluatchoi = (ImageButton) findViewById(R.id.btnLuatChoi);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         email = findViewById(R.id.email);
-        dangXuat = findViewById(R.id.mainDangXuat);
 
         if (user != null) {
             email.setText(user.getEmail());
@@ -52,11 +52,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        dangXuat.setOnClickListener(new View.OnClickListener() {
+
+        txtLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SignIn.class);
-                startActivity(intent);
+                // Get Firebase authentication instance
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+                // Sign out the user
+                mAuth.signOut();
+
+                Intent MainActivityIntent = new Intent(MainActivity.this, SignIn.class);
+                MainActivity.this.startActivity(MainActivityIntent);
             }
         });
     }
