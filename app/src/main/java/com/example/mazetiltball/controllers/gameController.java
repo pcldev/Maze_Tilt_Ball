@@ -97,67 +97,6 @@ public class gameController extends AppCompatActivity  {
         addUser(userGmail, mazeId, starPoints);
     }
 
-    // Create the user's Gmail node if it doesn't exist
-    private void createUserNode(String userGmail, String mazeId, int starPoints) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        DatabaseReference userRef = databaseReference.child("users").child(userGmail);
-
-
-
-        // Set the star points for the maze
-        userRef.child(mazeId).setValue(starPoints)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        Log.d("Firebase", "User node created successfully!");
-
-                        // Update the total star points for the user
-                        updateTotalStarPoints(userGmail);
-                    } else {
-                        Log.e("Firebase", "Error creating user node: " + task.getException());
-                    }
-                });
-    }
-
-    // Update the total star points for the user
-    private void updateTotalStarPoints(String userGmail) {
-        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-
-        DatabaseReference userRef = databaseReference.child("users").child(userGmail);
-
-        userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    int totalStarPoints = 0;
-
-                    for (DataSnapshot mazeSnapshot : snapshot.getChildren()) {
-                        if (mazeSnapshot.getValue() instanceof Long) {
-                            // Sum up the star points for all mazes
-                            totalStarPoints += ((Long) mazeSnapshot.getValue()).intValue();
-                        }
-                    }
-
-                    // Update the total star points in the user node
-                    userRef.child("totalStarPoints").setValue(totalStarPoints)
-                            .addOnCompleteListener(task -> {
-                                if (task.isSuccessful()) {
-                                    Log.d("Firebase", "Total star points updated successfully!");
-                                } else {
-                                    Log.e("Firebase", "Error updating total star points: " + task.getException());
-                                }
-                            });
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("Firebase", "Error reading user node: " + error.getMessage());
-            }
-        });
-    }
-
-
     public void addUser(String email, String mazeName, int score) {
         // Initialize Firebase
         FirebaseDatabase database = FirebaseDatabase.getInstance();
