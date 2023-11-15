@@ -126,7 +126,7 @@ public class gameController extends AppCompatActivity  {
         DatabaseReference userRef = databaseReference.child("users").child(userGmail);
 
         userRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
+                @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     int totalStarPoints = 0;

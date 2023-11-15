@@ -11,12 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.mazetiltball.auth.auth;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,6 +22,7 @@ public class SignUp extends AppCompatActivity {
     EditText edtEmail, edtMatKhau, edtLMatKhau;
     Button btnDangNhap, btnDangKy;
     FirebaseAuth mAuth;
+    String email, matKhau, reMatkKhau;
 
 //    @Override
 //    public void onStart() {
@@ -41,6 +40,7 @@ public class SignUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -66,7 +66,6 @@ public class SignUp extends AppCompatActivity {
     }
 
     private void register() {
-        String email, matKhau, reMatkKhau;
         email = edtEmail.getText().toString();
         matKhau = edtMatKhau.getText().toString();
         reMatkKhau = edtLMatKhau.getText().toString();

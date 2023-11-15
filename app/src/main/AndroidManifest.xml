@@ -16,6 +16,10 @@
         android:theme="@style/Theme.MazeTiltBall"
         tools:targetApi="31">
         <activity
+            android:name=".SeeRank"
+            android:exported="true"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".ManChoiActivity"
             android:exported="false"
             android:screenOrientation="landscape" />

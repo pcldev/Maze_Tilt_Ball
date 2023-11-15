@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     FirebaseUser user;
     TextView email, txtLogout;
+    Button btnhienDiem;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         email = findViewById(R.id.email);
+        btnhienDiem = findViewById(R.id.btnHiendiem);
 
         if (user != null) {
             email.setText(user.getEmail());
@@ -64,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent MainActivityIntent = new Intent(MainActivity.this, SignIn.class);
                 MainActivity.this.startActivity(MainActivityIntent);
+            }
+        });
+        btnhienDiem.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SeeRank.class);
+                startActivity(intent);
             }
         });
     }
