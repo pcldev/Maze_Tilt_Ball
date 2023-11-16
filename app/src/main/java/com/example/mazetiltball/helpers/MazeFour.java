@@ -17,7 +17,7 @@ public class MazeFour {
         float top = 0;
 
         // Define walls
-        RectF[] walls = new RectF[13];
+        RectF[] walls = new RectF[15];
         left = mazeLeft + DEFAULT_PADDING;
         top = mazeTop + DEFAULT_PADDING;
         right = mazeLeft + DEFAULT_PADDING + wallThickness;
@@ -112,6 +112,19 @@ public class MazeFour {
 
         walls[12] = new RectF(left, top, right, bottom);
 
+        left = (float) (left + DEFAULT_PADDING * 1.7);
+        top = (float) (mazeTop + DEFAULT_PADDING);
+        right = left + wallThickness;
+        bottom = (float) (mazeBottom - mazeBottom * 0.28);
+
+        walls[13] = new RectF(left, top, right, bottom);
+
+        left = (float) (left + DEFAULT_PADDING * 1.7);
+        top = (float) (mazeBottom * 0.28);
+        right = left + wallThickness;
+        bottom = (float) (mazeBottom - DEFAULT_PADDING);
+
+        walls[14] = new RectF(left, top, right, bottom);
         return walls;
     }
 
