@@ -14,6 +14,7 @@
         android:fontFamily="@font/ribeye_regular"
         android:gravity="center"
         android:text="Maze Tilt Ball"
+        android:textColor="@color/black"
         android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,6 +117,7 @@
         android:layout_marginTop="8dp"
         android:fontFamily="@font/ribeye_regular"
         android:text="0 star"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/btnMan1"
         app:layout_constraintTop_toBottomOf="@+id/btnMan1" />
 
@@ -127,6 +129,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/ribeye_regular"
         android:text="0 star"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/btnMan2"
         app:layout_constraintTop_toBottomOf="@+id/btnMan2" />
 
@@ -138,6 +141,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/ribeye_regular"
         android:text="0 star"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/btnMan3"
         app:layout_constraintTop_toBottomOf="@+id/btnMan3" />
 
@@ -149,6 +153,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/ribeye_regular"
         android:text="0 star"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/btnMan4"
         app:layout_constraintTop_toBottomOf="@+id/btnMan4" />
 
@@ -160,6 +165,7 @@
         android:layout_marginTop="12dp"
         android:fontFamily="@font/ribeye_regular"
         android:text="0 star"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/btnMan5"
         app:layout_constraintTop_toBottomOf="@+id/btnMan5" />
 
