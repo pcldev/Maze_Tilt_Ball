@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         btnhienDiem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SeeRank.class);
+                Intent intent = new Intent(MainActivity.this, RankingActivity.class);
                 startActivity(intent);
             }
         });
