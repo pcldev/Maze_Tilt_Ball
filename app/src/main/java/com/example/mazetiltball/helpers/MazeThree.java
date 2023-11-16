@@ -17,7 +17,7 @@ public class MazeThree {
         float top = 0;
 
         // Define walls
-        RectF[] walls = new RectF[13];
+        RectF[] walls = new RectF[15];
         left = mazeLeft + DEFAULT_PADDING;
         top = mazeTop + DEFAULT_PADDING;
         right = mazeLeft + DEFAULT_PADDING + wallThickness;
@@ -48,9 +48,9 @@ public class MazeThree {
 
         // Obstacles
         left = (float) (mazeLeft + DEFAULT_PADDING * 2.5);
-        top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING);
+        top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING + DEFAULT_PADDING);
         right = left + wallThickness;
-        bottom = (float) (mazeBottom - top);
+        bottom = (float) (mazeBottom- DEFAULT_PADDING);
 
         walls[4] = new RectF(left, top, right, bottom);
 
@@ -112,7 +112,21 @@ public class MazeThree {
 
         walls[12] = new RectF(left, top, right, bottom);
 
+        left = (float) (left + DEFAULT_PADDING * 1.7);
+        top = (float) (mazeTop + DEFAULT_PADDING);
+        right = left + wallThickness;
+        bottom = (float) (mazeBottom - mazeBottom * 0.28);
+
+        walls[13] = new RectF(left, top, right, bottom);
+
+        left = (float) (left + DEFAULT_PADDING * 1.7);
+        top = (float) (mazeBottom * 0.28);
+        right = left + wallThickness;
+        bottom = (float) (mazeBottom - DEFAULT_PADDING);
+
+        walls[14] = new RectF(left, top, right, bottom);
         return walls;
+
     }
 
 }

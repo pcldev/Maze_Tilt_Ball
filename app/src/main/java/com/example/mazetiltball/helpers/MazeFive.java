@@ -17,7 +17,7 @@ public class MazeFive {
         float top = 0;
 
         // Define walls
-        RectF[] walls = new RectF[13];
+        RectF[] walls = new RectF[15];
         left = mazeLeft + DEFAULT_PADDING;
         top = mazeTop + DEFAULT_PADDING;
         right = mazeLeft + DEFAULT_PADDING + wallThickness;
@@ -48,27 +48,27 @@ public class MazeFive {
 
         // Obstacles
         left = (float) (mazeLeft + DEFAULT_PADDING * 2.5);
-        top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING);
+        top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING + DEFAULT_PADDING);
         right = left + wallThickness;
-        bottom = (float) (mazeBottom - top);
+        bottom = (float) (mazeBottom- DEFAULT_PADDING);
 
         walls[4] = new RectF(left, top, right, bottom);
 
         left = (float) (left * 1.7);
         top = (float) (mazeTop + DEFAULT_PADDING);
         right = left + wallThickness;
-        bottom = (float) (mazeBottom - mazeBottom * 0.6);
+        bottom = (float) (mazeBottom  * 0.6);
 
         walls[5] = new RectF(left, top, right, bottom);
 
-        left = (float) (left);
-        top = (float) (mazeBottom - mazeBottom * 0.4);
+        left = (float) (left + DEFAULT_PADDING+ wallThickness);
+        top = (float) (mazeBottom  * 0.4);
         right = left + wallThickness;
         bottom = (float) (mazeBottom - DEFAULT_PADDING);
 
         walls[6] = new RectF(left, top, right, bottom);
 
-        left = (float) (left * 1.4);
+        left = (float) (left * 1.2);
         top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING);
         right = left + wallThickness;
         bottom = (float) (mazeBottom - top);
@@ -90,27 +90,40 @@ public class MazeFive {
 
         walls[9] = new RectF(left, top, right, bottom);
 
-
         left = (float) (left * 1 + DEFAULT_PADDING * 1.7);
         top = (float) (mazeTop + DEFAULT_PADDING + DEFAULT_PADDING);
         right = left + wallThickness;
         bottom = (float) (mazeBottom - top);
 
         walls[10] = new RectF(left, top, right, bottom);
+        left = (float) (left + DEFAULT_PADDING * 1.7);
+        top = (float) (mazeBottom * 0.28);
+        right = left + wallThickness;
+        bottom = (float) (mazeBottom - DEFAULT_PADDING);
 
+        walls[11] = new RectF(left, top, right, bottom);
         left = (float) (left + DEFAULT_PADDING * 1.7);
         top = (float) (mazeTop + DEFAULT_PADDING);
         right = left + wallThickness;
         bottom = (float) (mazeBottom - mazeBottom * 0.28);
 
-        walls[11] = new RectF(left, top, right, bottom);
+
+
+        walls[12] = new RectF(left, top, right, bottom);
 
         left = (float) (left + DEFAULT_PADDING * 1.7);
         top = (float) (mazeBottom * 0.28);
         right = left + wallThickness;
         bottom = (float) (mazeBottom - DEFAULT_PADDING);
 
-        walls[12] = new RectF(left, top, right, bottom);
+
+        walls[13] = new RectF(left, top, right, bottom);
+
+        left = (float) (left + DEFAULT_PADDING * 1.7);
+        top = (float) (mazeTop + DEFAULT_PADDING);
+        right = left + wallThickness;
+        bottom = (float) (mazeBottom - mazeBottom * 0.28);
+        walls[14] = new RectF(left, top, right, bottom);
 
         return walls;
     }
