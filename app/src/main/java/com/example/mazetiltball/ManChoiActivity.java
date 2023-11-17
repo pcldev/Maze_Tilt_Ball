@@ -1,21 +1,29 @@
 package com.example.mazetiltball;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.mazetiltball.auth.auth;
 import com.example.mazetiltball.auth.firebase;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 
 public class ManChoiActivity extends AppCompatActivity {
+    private TextView email;
+    private FirebaseAuth mAuth;
+    private FirebaseUser user;
     Button btnMan1,btnMan2,btnMan3,btnMan4,btnMan5;
 
     TextView txtStarGame1,txtStarGame2,txtStarGame3,txtStarGame4,txtStarGame5;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,10 +33,18 @@ public class ManChoiActivity extends AppCompatActivity {
         btnMan3 = findViewById(R.id.btnMan3);
         btnMan4 = findViewById(R.id.btnMan4);
         btnMan5 = findViewById(R.id.btnMan5);
+        mAuth = FirebaseAuth.getInstance();
+        user = mAuth.getCurrentUser();
+        email = findViewById(R.id.emailChoi);
 
         firebase Firebase = new firebase();
         auth Auth = new auth();
         DatabaseReference databaseReference = Firebase.initializeFirebase();
+
+        if (user != null) {
+            email.setText(user.getEmail());
+        }
+
 
 //        databaseReference
 

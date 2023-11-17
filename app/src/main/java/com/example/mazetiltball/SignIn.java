@@ -41,7 +41,7 @@ public class SignIn extends AppCompatActivity {
     private static final int RC_SIGN_IN = 123;
     private EditText edtEmail, edtMatKhau;
     private TextView textDangKy;
-    private Button btnDangNhap, btnDangKy;
+    private Button btnDangNhap;
     private FirebaseAuth mAuth, mAuthGg;
     GoogleSignInOptions gso;
     GoogleSignInClient gsc;

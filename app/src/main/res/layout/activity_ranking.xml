@@ -30,9 +30,32 @@
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:layout_gravity="center"
-        android:layout_marginTop="41dp"
         android:padding="16dp" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/nameMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/ribeye_regular"
+            android:text="You're logged in as: "
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/emailMain"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-30dp"
+            android:fontFamily="@font/ribeye_regular"
+            android:text="email"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+    </LinearLayout>
 
 </LinearLayout>
