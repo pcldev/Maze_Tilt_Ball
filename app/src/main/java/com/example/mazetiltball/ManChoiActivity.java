@@ -19,9 +19,9 @@ public class ManChoiActivity extends AppCompatActivity {
     private TextView email;
     private FirebaseAuth mAuth;
     private FirebaseUser user;
-    Button btnMan1,btnMan2,btnMan3,btnMan4,btnMan5;
+    Button btnMan1, btnMan2, btnMan3, btnMan4, btnMan5, btnMan6;
 
-    TextView txtStarGame1,txtStarGame2,txtStarGame3,txtStarGame4,txtStarGame5;
+    TextView txtStarGame1, txtStarGame2, txtStarGame3, txtStarGame4, txtStarGame5, txtStarGame6;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -33,6 +33,7 @@ public class ManChoiActivity extends AppCompatActivity {
         btnMan3 = findViewById(R.id.btnMan3);
         btnMan4 = findViewById(R.id.btnMan4);
         btnMan5 = findViewById(R.id.btnMan5);
+        btnMan6 = findViewById(R.id.btnMan6);
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         email = findViewById(R.id.emailChoi);
@@ -53,13 +54,14 @@ public class ManChoiActivity extends AppCompatActivity {
         txtStarGame3 = findViewById(R.id.txtStarGame3);
         txtStarGame4 = findViewById(R.id.txtStarGame4);
         txtStarGame5 = findViewById(R.id.txtStarGame5);
+        txtStarGame6 = findViewById(R.id.txtStarGame6);
 
-         Firebase.setUserMazeScore(txtStarGame1, Auth.getUser().getEmail(), "maze_1");
-         Firebase.setUserMazeScore(txtStarGame2, Auth.getUser().getEmail(), "maze_2");
-         Firebase.setUserMazeScore(txtStarGame3, Auth.getUser().getEmail(), "maze_3");
-         Firebase.setUserMazeScore(txtStarGame4, Auth.getUser().getEmail(), "maze_4");
-         Firebase.setUserMazeScore(txtStarGame5, Auth.getUser().getEmail(), "maze_5");
-
+        Firebase.setUserMazeScore(txtStarGame1, Auth.getUser().getEmail(), "maze_1");
+        Firebase.setUserMazeScore(txtStarGame2, Auth.getUser().getEmail(), "maze_2");
+        Firebase.setUserMazeScore(txtStarGame3, Auth.getUser().getEmail(), "maze_3");
+        Firebase.setUserMazeScore(txtStarGame4, Auth.getUser().getEmail(), "maze_4");
+        Firebase.setUserMazeScore(txtStarGame5, Auth.getUser().getEmail(), "maze_5");
+        Firebase.setUserMazeScore(txtStarGame6, Auth.getUser().getEmail(), "maze_6");
 
 
         btnMan1.setOnClickListener(new View.OnClickListener() {
@@ -126,6 +128,20 @@ public class ManChoiActivity extends AppCompatActivity {
 
                 // Pass any necessary data to the SongActivity (e.g., selected item data)
                 intent.putExtra("mazeId", "maze_5");
+
+                // Start the target Activity
+                startActivity(intent);
+
+            }
+        });
+        btnMan6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Create an Intent to open the target Activity
+                Intent intent = new Intent(ManChoiActivity.this, MazeActivity.class);
+
+                // Pass any necessary data to the SongActivity (e.g., selected item data)
+                intent.putExtra("mazeId", "maze_6");
 
                 // Start the target Activity
                 startActivity(intent);
