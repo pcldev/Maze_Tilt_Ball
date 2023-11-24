@@ -1,10 +1,6 @@
 package com.example.mazetiltball;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
@@ -13,20 +9,12 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
-import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 
 import com.example.mazetiltball.auth.auth;
-import com.example.mazetiltball.auth.firebase;
 import com.example.mazetiltball.controllers.gameController;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.time.Instant;
-import java.util.Date;
 
 public class MazeActivity extends AppCompatActivity implements SensorEventListener {
 
@@ -124,10 +112,7 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
                     tiltY = -values[0];
                     break;
             }
-
-
             gameView.setTiltX(tiltX);
-
             gameView.setTiltY(tiltY);
             // Update tilt values along both X and Y axes
             gameView.invalidate(); // Force redraw

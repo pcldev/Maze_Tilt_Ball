@@ -73,10 +73,9 @@ public class ManChoiActivity extends AppCompatActivity {
 
                 // Start the target Activity
                 startActivity(intent);
-
-
             }
         });
+
         btnMan2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

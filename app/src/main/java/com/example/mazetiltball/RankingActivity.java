@@ -37,7 +37,6 @@ public class RankingActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseUser user;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,9 +52,7 @@ public class RankingActivity extends AppCompatActivity {
         if (user != null) {
             email.setText(user.getEmail());
         }
-
         Query query = FirebaseDatabase.getInstance().getReference("users");
-
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -63,9 +60,7 @@ public class RankingActivity extends AppCompatActivity {
                 List<User> userList = new ArrayList<>();
                 for (DataSnapshot userSnapshot : dataSnapshot.getChildren()) {
                     Map<String, Object> data = (Map<String, Object>) userSnapshot.getValue();
-
                     String email = userSnapshot.getKey();
-
                     // Map the data to a User object
                     User user = new User();
                     user.setEmail(email.replace(",", "."));
@@ -77,32 +72,21 @@ public class RankingActivity extends AppCompatActivity {
                                 mazePoints.put(entry.getKey(), Integer.parseInt(entry.getValue().toString()));
                             }
                         }
-
-
                         int totalScore = calcTotalScore(mazePoints);
-
                         user.setTotalScore(totalScore);
-
                         userList.add(user);
-
                     }
-
                 }
-
                 // Sort the list based on totalScore in descending order
                 Collections.sort(userList, (user1, user2) -> Integer.compare(user2.getTotalScore(), user1.getTotalScore()));
-
                 FirebaseRecyclerOptions<User> options = new FirebaseRecyclerOptions.Builder<User>().setQuery(databaseReference, User.class).build();
-
                 FirebaseRecyclerAdapter<User, UserViewHolder> adapter = new FirebaseRecyclerAdapter<User, UserViewHolder>(options) {
                     @Override
                     protected void onBindViewHolder(@NonNull UserViewHolder holder, int position, @NonNull User model) {
                         holder.setPosition(position);
-
                         User user = userList.get(position);
                         holder.setEmail(user.getEmail());
                         holder.setTotalScore(user.getTotalScore());
-
                     }
 
                     @NonNull
@@ -112,10 +96,8 @@ public class RankingActivity extends AppCompatActivity {
                         return new UserViewHolder(view);
                     }
                 };
-
                 recyclerView.setAdapter(adapter);
                 adapter.startListening();
-
             }
 
             @Override
@@ -123,14 +105,11 @@ public class RankingActivity extends AppCompatActivity {
                 // Handle errors
             }
         });
-
-
     }
 
     // Your UserViewHolder class
     public static class UserViewHolder extends RecyclerView.ViewHolder {
         View mView;
-
 
         public UserViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -149,24 +128,18 @@ public class RankingActivity extends AppCompatActivity {
         }
 
         public void setTotalScore(int totalScore) {
-
-
             TextView textViewTotalScore = mView.findViewById(R.id.textViewTotalPoints);
             textViewTotalScore.setText(totalScore + (totalScore > 1 ? " stars" : " star"));
-
         }
-
     }
 
     private List<User> sortUsersByTotalScore(List<User> userList) {
-
         Collections.sort(userList, new Comparator<User>() {
             @Override
             public int compare(User user1, User user2) {
                 return Integer.compare(user2.getTotalScore(), user1.getTotalScore());
             }
         });
-
         return userList;
     }
 
@@ -175,7 +148,6 @@ public class RankingActivity extends AppCompatActivity {
         for (Map.Entry<String, Integer> entry : mazePoints.entrySet()) {
             totalScore += entry.getValue();
         }
-
         return totalScore;
     }
 

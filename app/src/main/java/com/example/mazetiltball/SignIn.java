@@ -1,14 +1,6 @@
 package com.example.mazetiltball;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.mazetiltball.auth.auth;
-import com.google.android.gms.common.api.ApiException;
-
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -17,17 +9,18 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.mazetiltball.auth.auth;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -89,11 +82,6 @@ public class SignIn extends AppCompatActivity {
 
         gsc = GoogleSignIn.getClient(this,gso);
 
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
-//        if (account != null) {
-//            firebaseAuthWithGoogle(account);
-//        }
-
         SignInButton btnGoogleSignIn = findViewById(R.id.btn_google_sign_in);
         btnGoogleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,12 +120,8 @@ public class SignIn extends AppCompatActivity {
         mAuthGg.signInWithCredential(credential)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        // Đăng nhập thành công, lưu token
+                        // Đăng nhập thành công
                         FirebaseUser user = mAuthGg.getCurrentUser();
-                        String idToken = account.getIdToken();
-                        // Lưu idToken vào SharedPreferences hoặc cơ sở dữ liệu
-                        saveIdToken(idToken);
-
                         Toast.makeText(getApplicationContext(), "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(SignIn.this, MainActivity.class);
                         startActivity(intent);
@@ -147,20 +131,6 @@ public class SignIn extends AppCompatActivity {
                     }
                 });
     }
-    private void saveIdToken(String idToken) {
-        // Khởi tạo một SharedPreferences
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        // Lưu ID token vào SharedPreferences
-        editor.putString("idToken", idToken);
-
-        // Lưu thay đổi
-        editor.apply();
-    }
-
-
-
     private void register() {
         Intent i = new Intent(SignIn.this, SignUp.class);
         startActivity(i);

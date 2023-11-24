@@ -8,11 +8,13 @@
     android:orientation="vertical"
     tools:context=".ManChoiActivity">
 
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        >
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/txtView"
             android:layout_width="wrap_content"
@@ -31,46 +33,55 @@
             app:layout_constraintVertical_bias="0.085" />
     </LinearLayout>
 
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp">
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnMan4"
+        <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:width="122dp"
-            android:height="122dp"
-            android:backgroundTint="#F3B1B1"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="Game 4"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnMan3"
-            app:layout_constraintStart_toEndOf="@+id/btnMan3"
-            app:layout_constraintTop_toTopOf="@+id/btnMan3"
-            app:layout_constraintVertical_bias="0.0" />
+            android:orientation="vertical">
+            <Button
+                android:id="@+id/btnMan1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:width="122dp"
+                android:height="122dp"
+                android:backgroundTint="#F3B1B1"
+                android:fontFamily="@font/ribeye_regular"
+                android:text="Game 1"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
 
-        <Button
-            android:id="@+id/btnMan1"
+            <TextView
+                android:id="@+id/txtStarGame1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/ribeye_regular"
+                android:text="0 star"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/btnMan1"
+                app:layout_constraintTop_toBottomOf="@+id/btnMan1" />
+        </GridLayout>
+
+        <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="48dp"
-            android:width="122dp"
-            android:height="122dp"
-            android:backgroundTint="#F3B1B1"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="Game 1"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.498" />
-
+            android:orientation="vertical">
         <Button
             android:id="@+id/btnMan2"
             android:layout_width="wrap_content"
@@ -88,6 +99,23 @@
             app:layout_constraintTop_toTopOf="@+id/btnMan1"
             app:layout_constraintVertical_bias="0.0" />
 
+            <TextView
+                android:id="@+id/txtStarGame2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/ribeye_regular"
+                android:text="0 star"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/btnMan2"
+                app:layout_constraintTop_toBottomOf="@+id/btnMan2" />
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <Button
             android:id="@+id/btnMan3"
             android:layout_width="wrap_content"
@@ -105,6 +133,57 @@
             app:layout_constraintTop_toTopOf="@+id/btnMan2"
             app:layout_constraintVertical_bias="0.0" />
 
+            <TextView
+                android:id="@+id/txtStarGame3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/ribeye_regular"
+                android:text="0 star"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/btnMan3"
+                app:layout_constraintTop_toBottomOf="@+id/btnMan3" />
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <Button
+            android:id="@+id/btnMan4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="44dp"
+            android:width="122dp"
+            android:height="122dp"
+            android:backgroundTint="#F3B1B1"
+            android:fontFamily="@font/ribeye_regular"
+            android:text="Game 4"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMan3"
+            app:layout_constraintStart_toEndOf="@+id/btnMan3"
+            app:layout_constraintTop_toTopOf="@+id/btnMan3"
+            app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/txtStarGame4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/ribeye_regular"
+                android:text="0 star"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/btnMan4"
+                app:layout_constraintTop_toBottomOf="@+id/btnMan4" />
+        </GridLayout>
+
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
         <Button
             android:id="@+id/btnMan5"
             android:layout_width="wrap_content"
@@ -123,67 +202,58 @@
             app:layout_constraintStart_toEndOf="@+id/btnMan4"
             app:layout_constraintTop_toTopOf="@+id/btnMan4"
             app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/txtStarGame5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/ribeye_regular"
+                android:text="0 star"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/btnMan5"
+                app:layout_constraintTop_toBottomOf="@+id/btnMan5" />
+        </GridLayout>
 
-        <TextView
-            android:id="@+id/txtStarGame1"
+        <GridLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="8dp"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="0 star"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/btnMan1"
-            app:layout_constraintTop_toBottomOf="@+id/btnMan1" />
-
-        <TextView
-            android:id="@+id/txtStarGame2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="0 star"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/btnMan2"
-            app:layout_constraintTop_toBottomOf="@+id/btnMan2" />
-
-        <TextView
-            android:id="@+id/txtStarGame3"
+            android:orientation="vertical">
+        <Button
+            android:id="@+id/btnMan6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="44dp"
-            android:layout_marginTop="12dp"
+            android:width="122dp"
+            android:height="122dp"
+            android:backgroundTint="#F3B1B1"
             android:fontFamily="@font/ribeye_regular"
-            android:text="0 star"
+            android:text="Game 6"
             android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/btnMan3"
-            app:layout_constraintTop_toBottomOf="@+id/btnMan3" />
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnMan4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/btnMan5"
+            app:layout_constraintTop_toTopOf="@+id/btnMan5"
+            app:layout_constraintVertical_bias="0.0" />
+            <TextView
+                android:id="@+id/txtStarGame6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="80dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/ribeye_regular"
+                android:text="0 star"
+                android:textColor="@color/black"
+                app:layout_constraintStart_toStartOf="@+id/btnMan6"
+                app:layout_constraintTop_toBottomOf="@+id/btnMan6" />
+        </GridLayout>
 
-        <TextView
-            android:id="@+id/txtStarGame4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="0 star"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/btnMan4"
-            app:layout_constraintTop_toBottomOf="@+id/btnMan4" />
-
-        <TextView
-            android:id="@+id/txtStarGame5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="44dp"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="0 star"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toStartOf="@+id/btnMan5"
-            app:layout_constraintTop_toBottomOf="@+id/btnMan5" />
     </LinearLayout>
+        </HorizontalScrollView>
+
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -212,4 +282,30 @@
             android:textSize="18dp" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="200dp">
+
+        <TextView
+            android:id="@+id/nameChoi1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="30dp"
+            android:fontFamily="@font/ribeye_regular"
+            android:text="You're logged in as: "
+            android:textColor="#000000"
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/emailChoi1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-30dp"
+            android:fontFamily="@font/ribeye_regular"
+            android:text="email"
+            android:textColor="#000000"
+            android:textSize="18dp" />
+    </LinearLayout>
 </LinearLayout>
