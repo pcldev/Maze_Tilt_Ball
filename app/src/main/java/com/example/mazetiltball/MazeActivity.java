@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Surface;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +37,9 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
 
     private String mazeId;
 
+    private Button pauseBtn;
+    private Boolean isPausing = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +47,7 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_maze);
 
         gameView = findViewById(R.id.gameView);
+        pauseBtn = findViewById(R.id.pauseGameBtn);
         // Set up the sensor manager and accelerometer
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         accelerometer = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -53,6 +58,13 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
             mazeId = intent.getStringExtra("mazeId");
             gameView.setMazeId(mazeId);
         }
+
+        pauseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                isPausing = !isPausing;
+            }
+        });
     }
 
     @Override
@@ -69,6 +81,10 @@ public class MazeActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
+        // Stop drawing when pausing
+        if(isPausing) return;
+
+
         float tiltX = 350, tiltY = 150;
 
         gameController GameController = new gameController(gameView, gameView.getContext());
