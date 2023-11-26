@@ -16,11 +16,11 @@
 
         <EditText
             android:id="@+id/searchEditText"
-            android:layout_width="0dp"
+            android:layout_width="625dp"
+            android:layout_height="61dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
             android:hint="Enter game name..."
-            android:inputType="text"/>
+            android:inputType="text" />
 
         <Button
             android:id="@+id/searchButton"
@@ -110,6 +110,8 @@
                     android:id="@+id/btnMan2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_row="0"
+                    android:layout_column="1"
                     android:layout_marginStart="44dp"
                     android:width="122dp"
                     android:height="122dp"
@@ -213,7 +215,7 @@
 
                 <Button
                     android:id="@+id/btnMan5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="84dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="44dp"
                     android:width="122dp"
@@ -309,30 +311,4 @@
             android:textSize="18dp" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp">
-
-        <TextView
-            android:id="@+id/nameChoi1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="You're logged in as: "
-            android:textColor="#000000"
-            android:textSize="18dp" />
-
-        <TextView
-            android:id="@+id/emailChoi1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="-30dp"
-            android:fontFamily="@font/ribeye_regular"
-            android:text="email"
-            android:textColor="#000000"
-            android:textSize="18dp" />
-    </LinearLayout>
 </LinearLayout>
